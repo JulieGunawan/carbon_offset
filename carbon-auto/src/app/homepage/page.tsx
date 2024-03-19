@@ -1,8 +1,7 @@
-import Link from 'next/link';
 import { Typography } from "@mui/material";
 import { lusitana } from '@/app/theme/fonts';
 
-const HomePage: React.FC = () => {
+export default function HomePage() {
     return (
         <div>
             <Typography 
@@ -11,7 +10,6 @@ const HomePage: React.FC = () => {
                 sx={{ textAlign: 'center' }}    
             >Growing Trees While Driving</Typography>   
         </div>
-    );
-};
+    )
+}
 
-export default HomePage;

@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
+"use client";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
-// import axios from "axios";
-// import {toast} from "react-hot-toast";
-
+import React, {useEffect} from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import {toast} from "react-hot-toast";
 export default function SignupPage() {
     //once the user sign up, it will be redirected to login page, using router to do that
     const router = useRouter();
@@ -19,14 +19,13 @@ export default function SignupPage() {
     const onSignup = async () => {    
         try{
             setLoading(true);
-            // const response = await axios.post("/api/users/signup", user);
-            // console.log("Signup success", response.data);
-            console.log("signup");
+            const response = await axios.post("/api/users/signup", user);
+            console.log("Signup success", response.data);
             //once user succesfully signup, redirect to login page
             router.push("/login");
         } catch (error: any){
             console.log("Sign up failed", error.message);
-            // toast.error(error.message);
+            toast.error(error.message);
         } finally {
             setLoading(false);
         }

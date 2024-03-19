@@ -1,20 +1,9 @@
 "use client";
-import { Roboto } from "next/font/google";
+
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
-
-const roboto= Roboto({
-    weight:['300','400','500', '700'],
-    style:['normal', 'italic'],
-    subsets: ['latin'],
-    display: 'swap'
-})
+import { roboto, lusitana } from '@/app/theme/fonts';
 
 const themeOptions: ThemeOptions = {
     palette: {
