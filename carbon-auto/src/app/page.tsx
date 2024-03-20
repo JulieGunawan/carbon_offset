@@ -8,14 +8,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button, CardMedia, Link } from "@mui/material";
 
-const card = (
-  <React.Fragment>
-    
 
-  </React.Fragment>
-);
-
-export default function Home() {
+export default function Home():React.JSX.Element {
   return (
     <main className={styles.main}>  
       <Header />

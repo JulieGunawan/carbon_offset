@@ -30,8 +30,9 @@ export const VehicleCard = () => {
             Year: 2022 <br/>
             Fuel Type: Petrol <br/>
             Mileage: 39,880 km <br/>
-            Ratio of km to trees: 20 km : 22 trees <br/>
-            Number of trees planted up to date: 43,800
+            km to tree ratio: 1:1.1 <br/>
+            # of trees planted: 43,800 <br/>
+            # of tree needed to offset the carbon footprint: 43868 (mileage* ratio)
           </Typography>
         </CardContent>
         <CardActions>

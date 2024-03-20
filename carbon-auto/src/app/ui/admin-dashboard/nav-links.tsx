@@ -10,6 +10,10 @@ import clsx from 'clsx';
     {
       name: 'Inventories',
       href: '/adminDashboard/inventories',
+    },
+    {
+      name: 'Create Vehicle',
+      href: '/adminDashboard/create',
     }
   ];
   

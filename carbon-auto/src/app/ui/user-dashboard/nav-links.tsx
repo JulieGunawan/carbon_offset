@@ -22,7 +22,6 @@ import clsx from 'clsx';
     return (
       <>
         {links.map((link) => {
-          
           return (
             <Link
               key={link.name}
