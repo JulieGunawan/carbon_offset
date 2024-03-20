@@ -1,13 +1,35 @@
 import SideNav from "@/app/ui/admin-dashboard/sidenav";
+import { AppBar, Box, CssBaseline, Divider, Toolbar, Typography } from "@mui/material";
 import React from "react";
 
 export default function Layout({children}: {children: React.ReactNode} ) {
+    const drawerWidth = 240;
     return (
-        <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-            <div className="w-full flex-none md:w-64">
-                <SideNav />
-            </div>
-            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
-        </div>
+    <>
+        <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <AppBar
+            position="fixed"
+            sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+            >
+                <Toolbar>
+                    <Typography variant="h6" noWrap component="div">
+                    Admin Dashboard
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <SideNav />
+            <Toolbar />
+            <Divider />
+        
+        <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        >
+            <Toolbar />
+            {children}
+        </Box>
+        </Box>
+    </>
     )
 }
