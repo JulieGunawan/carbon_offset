@@ -3,7 +3,7 @@ export default function AdminInventoryPage():React.JSX.Element {
     return (
         <>
             <p>admin inventory Page</p>
-            <VehicleContainer />
+            <VehicleContainer isUser={false}/>
         </>
     );
   }

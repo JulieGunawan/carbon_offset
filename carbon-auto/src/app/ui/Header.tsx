@@ -26,10 +26,10 @@ export const Header: React.FC = () => {
                   />
               </Link>
               <Button>
-                  <Link href="/login">Login</Link>      
+                  <Link href="https://www.guardyanconservation.com/guardyan-guidebook">Blog</Link>      
               </Button>
               <Button>
-                <Link href="/signup">Sign up</Link>
+                <Link href="https://www.guardyanconservation.com/faq">FAQ</Link>
               </Button>
             </Box>
           </Toolbar>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import NavLinks from '@/app/ui/admin-dashboard/nav-links';
+import NavLinks from '@/app/ui/user-dashboard/nav-links';
 import DashboardLogo from '../dashboard-logo';
 import { Box, Button, Drawer, Toolbar, Typography } from '@mui/material';
 

@@ -3,7 +3,7 @@ export default function UserInventoryPage():React.JSX.Element {
     return (
         <>
             <p>user inventory Page</p>
-            <VehicleContainer />
+            <VehicleContainer isUser={true}/>
         </>
     );
   }

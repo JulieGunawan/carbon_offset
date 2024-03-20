@@ -2,15 +2,30 @@
 
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
+import { Colors } from "@/app/theme/colors";
 import { roboto, lusitana } from '@/app/theme/fonts';
 
 const themeOptions: ThemeOptions = {
     palette: {
         background:{
-            default: '#e9f8f9'
+            default: Colors.background,
         },
-        mode: 'light'
+        primary: {
+            main: Colors.primary
+        },
+        secondary: {
+            main: Colors.secondary
+        },
+        error: {
+            main: Colors.danger
+        },
+        warning: {
+            main: Colors.warning
+        },
+        info: {
+            main: Colors.info
+        },
+        mode: 'dark'
     },
     typography: {
         fontFamily: roboto.style.fontFamily,

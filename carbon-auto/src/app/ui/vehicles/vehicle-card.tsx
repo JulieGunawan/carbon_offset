@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import NavLinks from '@/app/ui/admin-dashboard/nav-links';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -8,7 +7,12 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 
-export const VehicleCard = () => {
+interface VehicleCardProps {
+  isUser: boolean;
+}
+
+
+export const VehicleCard: React.FC<VehicleCardProps> = ({isUser}) => {
   return (
     <Card sx={{display: 'flex'}}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -36,7 +40,12 @@ export const VehicleCard = () => {
           </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small">Buy Trees</Button>
+            <Button size="small">
+              { isUser ? (
+                <Link href="/userDashboard/inventories/buy-trees">Buy Trees</Link>
+              ) : ""}
+              
+            </Button>
       </CardActions>
       </Box>
       
