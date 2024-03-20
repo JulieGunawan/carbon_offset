@@ -48,24 +48,6 @@ export default function SignupPage():React.JSX.Element {
                 <Typography component="h1" variant="h5">{loading ? "Processing..." : "Sign Up"}</Typography>
                 <Box component="form" noValidate sx={{ mt: 3 }}>
                     <Grid container spacing ={2}>
-                        <Grid item xs={12}>
-                            <TextField 
-                                name="username" 
-                                required 
-                                fullWidth 
-                                id="username" 
-                                label="Username" 
-                                autoFocus
-                            />
-                            {/* <input 
-                                id="username" 
-                                type="text" 
-                                className="p-4 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black text-2xl"
-                                value={user.username} 
-                                onChange={(e) => setUser({...user, username: e.target.value})}
-                                placeholder="username"
-                            /> */}
-                        </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField 
                                 name="firstName" 
@@ -130,7 +112,8 @@ export default function SignupPage():React.JSX.Element {
                                 autoFocus
                             />
                         </Grid>
-                       
+                    </Grid>
+                </Box>
                         {/* <input 
                             id="password" 
                             type="password" 
@@ -139,20 +122,17 @@ export default function SignupPage():React.JSX.Element {
                             onChange={(e) => setUser({...user, password: e.target.value})}
                             placeholder="password"
                         /> */}
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                            disabled={buttonDisabled}
-                            onClick={onSignup}
-                        >{buttonDisabled ? "Incomplete form" : "Signup"}
-                        </Button>
-                        <Link href="/login" className="text-white">Visit login page</Link>
-                    </Grid>
-                </Box>
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                    disabled={buttonDisabled}
+                    onClick={onSignup}
+                >{buttonDisabled ? "Incomplete form" : "Signup"}
+                </Button>
+                <Link href="/login" className="text-white">Visit login page</Link>  
             </Box>
         </Container>
     )
-
 }
