@@ -5,7 +5,6 @@ import React from "react";
 export default function Layout({children}: {children: React.ReactNode} ) {
     const drawerWidth = 240;
     return (
-    <>
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar
@@ -20,16 +19,14 @@ export default function Layout({children}: {children: React.ReactNode} ) {
             </AppBar>
             <SideNav />
             <Toolbar />
-            <Divider />
-        
-        <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-        >
-            <Toolbar />
-            {children}
+            <Divider />  
+            <Box
+            component="main"
+            sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+            >
+                <Toolbar />
+                {children}
+            </Box>
         </Box>
-        </Box>
-    </>
     )
 }
