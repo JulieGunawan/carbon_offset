@@ -58,14 +58,7 @@ export default function LoginPage():React.JSX.Element {
                             value={user.email}
                             onChange={(e) => setUser({...user, email:e.target.value})}
                         />
-                        {/* <input
-                        className="p-4 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black text-2xl"
-                        id="email"
-                        type="text"
-                        value={user.email}
-                        onChange={(e) => setUser({...user, email:e.target.value})}
-                        placeholder="email"
-                    /> */}
+                      
                     </Grid>
                     <Grid item xs={12}>
                         <TextField 
@@ -80,14 +73,7 @@ export default function LoginPage():React.JSX.Element {
                         />
                     </Grid>
                     
-                    {/* <input
-                        className="p-4 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black text-2xl"
-                        id="password"
-                        type="password"
-                        value={user.password}
-                        onChange={(e) => setUser({...user, password:e.target.value})}
-                        placeholder="password"
-                    /> */}
+                   
                     </Grid>
                 </Box>
                 {/* <Button
@@ -99,7 +85,6 @@ export default function LoginPage():React.JSX.Element {
                     onClick={onLogin}
                 >{buttonDisabled ? "Incomplete form" : "Login"}
                 </Button> */}
-    
 
                 <Button
                     type="submit"
@@ -111,12 +96,6 @@ export default function LoginPage():React.JSX.Element {
                 >   Login
                 </Button>
             
-            {/* <Button 
-                onClick={onLogin}
-                className="p-4 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-white text-2xl"
-            >
-                {buttonDisabled ? "Incomplete form" : "Login Here"}
-            </Button>     */}
             <Link href="/signup" className="text-white">Visit signup page</Link>  
             </Box>      
         </Container>
