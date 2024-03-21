@@ -17,8 +17,8 @@ export default function LoginPage():React.JSX.Element {
     const onLogin = async () => { 
         try{
             setLoading(true);
-            const response = await axios.post("/api/users/login", user);
-            console.log("Login success",response.data);
+            // const response = await axios.post("/api/users/login", user);
+            // console.log("Login success",response.data);
             // toast.success("Login success");
             //once user succesfully signup, redirect to profile page
             router.push("/profile");
