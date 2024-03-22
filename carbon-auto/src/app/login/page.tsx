@@ -99,5 +99,6 @@ export default function LoginPage():React.JSX.Element {
             <Link href="/signup" className="text-white">Visit signup page</Link>  
             </Box>      
         </Container>
+        
     )
 }
