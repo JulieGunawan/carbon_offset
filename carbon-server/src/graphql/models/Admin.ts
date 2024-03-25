@@ -16,4 +16,7 @@ export class Admin {
 
     @Field()
     role: string;
+
+    @Field({nullable: true})
+    avatar: string;
 }

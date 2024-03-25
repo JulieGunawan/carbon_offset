@@ -16,4 +16,7 @@ export class User {
 
     @Field()
     role: string;
+
+    @Field({nullable: true})
+    avatar: string;
 }
