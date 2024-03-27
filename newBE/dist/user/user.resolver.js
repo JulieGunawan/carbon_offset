@@ -25,7 +25,7 @@ let UserResolver = class UserResolver {
             return await this.userService.findAll();
         }
     }
-    async findOneUser(id) {
+    async getOneUser(id) {
         return this.userService.findOne(id);
     }
 };
@@ -42,7 +42,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
-], UserResolver.prototype, "findOneUser", null);
+], UserResolver.prototype, "getOneUser", null);
 exports.UserResolver = UserResolver = __decorate([
     (0, graphql_1.Resolver)('User'),
     __metadata("design:paramtypes", [user_service_1.UserService])

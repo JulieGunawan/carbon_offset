@@ -27,6 +27,7 @@ input UpdateInventoryInput {
 type Query {
   inventory: [Inventory]!
   getAllInventories: [Inventory]
+  getOneInventory(id:Int!): Inventory
 }
 
 type Mutation {

@@ -20,10 +20,10 @@ export class InventoryResolver {
     }
   }
 
-//   @Query('inventory')
-//   findOne(@Args('id') id: number) {
-//     return this.inventoryService.findOne(id);
-//   }
+  @Query(()=>InventoryEntity)
+  getOneInventory(@Args('id') id: number): Promise<InventoryEntity> {
+    return this.inventoryService.findOne(id);
+  }
 
 //   @Mutation('updateInventory')
 //   update(@Args('updateInventoryInput') updateInventoryInput: UpdateInventoryInput) {

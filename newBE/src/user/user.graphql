@@ -24,7 +24,7 @@ input UpdateUserInput {
 type Query {
 #  user: [User]!
   getAllUsers: [User]
-  findOneUser(id: Int!): User
+  getOneUser(id: Int!): User
 }
 
 #type Mutation {

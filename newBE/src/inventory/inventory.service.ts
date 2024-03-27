@@ -17,9 +17,9 @@ export class InventoryService {
       return await this.inventoryModel.findAll();
     }
 
-//   findOne(id: number) {
-//     return `This action returns a #${id} inventory`;
-//   }
+  async findOne(id: number): Promise<InventoryEntity> {
+    return await this.inventoryModel.findByPk(id);
+  }
 
 //   update(id: number, updateInventoryInput: UpdateInventoryInput) {
 //     return `This action updates a #${id} inventory`;
