@@ -59,6 +59,22 @@ __decorate([
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], UserEntity.prototype, "avatar", void 0);
+__decorate([
+    sequelize_typescript_1.CreatedAt,
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "createdAt" }),
+    __metadata("design:type", Date)
+], UserEntity.prototype, "createdAt", void 0);
+__decorate([
+    sequelize_typescript_1.UpdatedAt,
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "updatedAt" }),
+    __metadata("design:type", Date)
+], UserEntity.prototype, "updatedAt", void 0);
+__decorate([
+    sequelize_typescript_1.DeletedAt,
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "deletedAt", allowNull: true }),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", Date)
+], UserEntity.prototype, "deletedAt", void 0);
 exports.UserEntity = UserEntity = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: 'Users',

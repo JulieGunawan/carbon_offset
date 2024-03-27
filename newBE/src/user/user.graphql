@@ -7,8 +7,9 @@ type User {
   password:String!
   role:String!
   avatar:String
-  createdAt:Date
-
+  createdAt:Date!
+  updatedAt:Date!
+  deletedAt:Date
 }
 
 input CreateUserInput {

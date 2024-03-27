@@ -1,6 +1,18 @@
 type Inventory {
   # Example field (placeholder)
-  exampleField: Int
+  id: Int!
+  make:String!
+  model:String!
+  trim: String!
+  year: Int!
+  fuelType: String!
+  image:String
+  mileage:Int!
+  treeRatio:Float
+  treePlanted:Int
+  createdAt:Date!
+  updatedAt:Date!
+  deletedAt:Date
 }
 
 input CreateInventoryInput {
@@ -14,7 +26,7 @@ input UpdateInventoryInput {
 
 type Query {
   inventory: [Inventory]!
-  inventory(id: Int!): Inventory
+  getAllInventories: [Inventory]
 }
 
 type Mutation {

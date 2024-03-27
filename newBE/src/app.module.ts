@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UserEntity } from './user/entities/user.entity';
 import { InventoryModule } from './inventory/inventory.module';
+import { InventoryEntity } from './inventory/entities/inventory.entity';
 
 @Module({
   imports: [ 
@@ -23,7 +24,7 @@ import { InventoryModule } from './inventory/inventory.module';
       username: 'admin',
       password: '142536',
       database: 'mydb',
-      models: [UserEntity],
+      models: [UserEntity, InventoryEntity],
     }),
     UserModule,
     InventoryModule,

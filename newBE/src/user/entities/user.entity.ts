@@ -55,17 +55,17 @@ export class UserEntity extends Model<UserAttributes>{
       @Field({nullable: true})
       avatar?: string;
   
-    //   @CreatedAt
-    //   @Column({ type: DataType.DATE, field: "createdAt" })
-    //   createdAt!: Date;
+      @CreatedAt
+      @Column({ type: DataType.DATE, field: "createdAt" })
+      createdAt!: Date;
   
-    //   @UpdatedAt
-    //   @Column({ type: DataType.DATE, field: "updatedAt" })
-    //   updatedAt: Date;
+      @UpdatedAt
+      @Column({ type: DataType.DATE, field: "updatedAt" })
+      updatedAt: Date;
   
-    //   @DeletedAt
-    //   @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
-    //   @Field({nullable: true})
-    //   deletedAt?: Date;
+      @DeletedAt
+      @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
+      @Field({nullable: true})
+      deletedAt?: Date;
   
 }

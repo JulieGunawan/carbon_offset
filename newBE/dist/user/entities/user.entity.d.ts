@@ -15,4 +15,7 @@ export declare class UserEntity extends Model<UserAttributes> {
     password: string;
     role: string;
     avatar?: string;
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt?: Date;
 }
