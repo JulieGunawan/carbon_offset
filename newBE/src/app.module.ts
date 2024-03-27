@@ -8,7 +8,8 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { UserEntity } from './user/entities/user.entity';
 import { InventoryModule } from './inventory/inventory.module';
 import { InventoryEntity } from './inventory/entities/inventory.entity';
-// import { MakeModule } from './make/make.module';
+import { MakeModule } from './make/make.module';
+import { MakeEntity } from './make/entities/make.entity';
 
 @Module({
   imports: [ 
@@ -25,11 +26,11 @@ import { InventoryEntity } from './inventory/entities/inventory.entity';
       username: 'admin',
       password: '142536',
       database: 'mydb',
-      models: [UserEntity, InventoryEntity],
+      models: [UserEntity, InventoryEntity, MakeEntity],
     }),
     UserModule,
     InventoryModule,
-    // MakeModule,
+    MakeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

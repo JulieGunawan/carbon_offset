@@ -30,6 +30,7 @@ export class MakeEntity extends Model<MakeAttributes>{
   
       @Column({
         type: DataType.STRING,
+        unique:true,
         field:"make"
       })
       @Field()

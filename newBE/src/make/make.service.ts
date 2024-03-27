@@ -14,6 +14,7 @@ export class MakeService {
 //   }
 
   async findAll(): Promise<MakeEntity[]> {
+    console.log('lalalla')
     return await this.makeModel.findAll();
   }
 

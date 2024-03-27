@@ -17,6 +17,8 @@ const sequelize_1 = require("@nestjs/sequelize");
 const user_entity_1 = require("./user/entities/user.entity");
 const inventory_module_1 = require("./inventory/inventory.module");
 const inventory_entity_1 = require("./inventory/entities/inventory.entity");
+const make_module_1 = require("./make/make.module");
+const make_entity_1 = require("./make/entities/make.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -35,10 +37,11 @@ exports.AppModule = AppModule = __decorate([
                 username: 'admin',
                 password: '142536',
                 database: 'mydb',
-                models: [user_entity_1.UserEntity, inventory_entity_1.InventoryEntity],
+                models: [user_entity_1.UserEntity, inventory_entity_1.InventoryEntity, make_entity_1.MakeEntity],
             }),
             user_module_1.UserModule,
             inventory_module_1.InventoryModule,
+            make_module_1.MakeModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
