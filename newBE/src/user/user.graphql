@@ -1,0 +1,32 @@
+scalar Date 
+
+type User {
+  id: Int!
+  name:String!
+  email:String!
+  password:String!
+  role:String!
+  avatar:String
+  createdAt:Date
+
+}
+
+input CreateUserInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateUserInput {
+  id: Int!
+}
+
+type Query {
+#  user: [User]!
+  getAllUsers: [User]
+}
+
+#type Mutation {
+#  createUser(createUserInput: CreateUserInput!): User!
+#  updateUser(updateUserInput: UpdateUserInput!): User!
+#  removeUser(id: Int!): User
+#}
