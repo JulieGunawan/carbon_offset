@@ -1,21 +1,24 @@
-// import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-// import { MakeService } from './make.service';
-// import { CreateMakeInput } from './dto/create-make.input';
-// import { UpdateMakeInput } from './dto/update-make.input';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { MakeService } from './make.service';
+import { CreateMakeInput } from './dto/create-make.input';
+import { UpdateMakeInput } from './dto/update-make.input';
+import { MakeEntity } from './entities/make.entity';
 
-// @Resolver('Make')
-// export class MakeResolver {
-//   constructor(private readonly makeService: MakeService) {}
+@Resolver('Make')
+export class MakeResolver {
+  constructor(private readonly makeService: MakeService) {}
 
 //   @Mutation('createMake')
 //   create(@Args('createMakeInput') createMakeInput: CreateMakeInput) {
 //     return this.makeService.create(createMakeInput);
 //   }
 
-//   @Query('make')
-//   findAll() {
-//     return this.makeService.findAll();
-//   }
+  @Query(()=>[MakeEntity])
+  async getAllMakes(): Promise<MakeEntity[]>{
+    {
+      return await this.makeService.findAll();
+    }
+  }
 
 //   @Query('make')
 //   findOne(@Args('id') id: number) {
@@ -31,4 +34,4 @@
 //   remove(@Args('id') id: number) {
 //     return this.makeService.remove(id);
 //   }
-// }
+}

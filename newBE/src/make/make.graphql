@@ -1,0 +1,31 @@
+scalar Date 
+
+type Make {
+  id: Int!
+  make:String!
+  logo:String
+  createdAt:Date!
+  updatedAt:Date!
+  deletedAt:Date
+}
+
+input CreateMakeInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateMakeInput {
+  id: Int!
+}
+
+type Query {
+#  make: [Make]!
+  getAllMakes: [Make]
+  #getOneUser(id: Int!): User
+}
+
+#type Mutation {
+#  createUser(createUserInput: CreateUserInput!): User!
+#  updateUser(updateUserInput: UpdateUserInput!): User!
+#  removeUser(id: Int!): User
+#}

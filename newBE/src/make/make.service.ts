@@ -1,16 +1,21 @@
-// import { Injectable } from '@nestjs/common';
-// import { CreateMakeInput } from './dto/create-make.input';
-// import { UpdateMakeInput } from './dto/update-make.input';
+import { Inject, Injectable } from '@nestjs/common';
+import { CreateMakeInput } from './dto/create-make.input';
+import { UpdateMakeInput } from './dto/update-make.input';
+import { MakeEntity, MakeProvider } from './entities/make.entity';
 
-// @Injectable()
-// export class MakeService {
+@Injectable()
+export class MakeService {
+
+  constructor(
+    @Inject(MakeProvider) private makeModel: typeof MakeEntity
+) {}
 //   create(createMakeInput: CreateMakeInput) {
 //     return 'This action adds a new make';
 //   }
 
-//   findAll() {
-//     return `This action returns all make`;
-//   }
+  async findAll(): Promise<MakeEntity[]> {
+    return await this.makeModel.findAll();
+  }
 
 //   findOne(id: number) {
 //     return `This action returns a #${id} make`;
@@ -23,4 +28,4 @@
 //   remove(id: number) {
 //     return `This action removes a #${id} make`;
 //   }
-// }
+}
