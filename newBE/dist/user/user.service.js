@@ -22,6 +22,9 @@ let UserService = class UserService {
     async findAll() {
         return await this.userModel.findAll();
     }
+    async findOne(id) {
+        return await this.userModel.findByPk(id);
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

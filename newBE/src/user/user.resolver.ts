@@ -20,10 +20,10 @@ export class UserResolver {
     }
   }
 
-  // @Query('user')
-  // findOne(@Args('id') id: number) {
-  //   return this.userService.findOne(id);
-  // }
+  @Query(()=>UserEntity)
+  async findOneUser(@Args('id') id: number): Promise<UserEntity> {
+    return this.userService.findOne(id);
+  }
 
   // @Mutation('updateUser')
   // update(@Args('updateUserInput') updateUserInput: UpdateUserInput) {

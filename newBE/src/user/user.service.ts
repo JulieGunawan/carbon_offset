@@ -17,9 +17,9 @@ export class UserService {
     return await this.userModel.findAll();
   }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} user`;
-  // }
+  async findOne(id: number): Promise<UserEntity> {
+    return await this.userModel.findByPk(id);
+  }
 
   // update(id: number, updateUserInput: UpdateUserInput) {
   //   return `This action updates a #${id} user`;
