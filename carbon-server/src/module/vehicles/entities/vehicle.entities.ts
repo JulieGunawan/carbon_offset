@@ -1,45 +1,90 @@
-import { Column, Model, Table, CreatedAt, UpdatedAt, DeletedAt } from 'sequelize-typescript';
+import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { Column, Model, Table, CreatedAt, UpdatedAt, DeletedAt, DataType } from 'sequelize-typescript';
 
-@Table({tableName:'Vehicles'})
+@ObjectType()
 export class Vehicle extends Model {
-  @Column
+  @Column({
+    type: DataType.INTEGER,
+    primaryKey: true,
+    unique: true,
+    autoIncrement: true,
+  })
+  @Field((type) => Int)
   id: number;
 
-  @Column
+  @Column({
+    type: DataType.STRING,
+    field:"make"
+  })
+  @Field()
   make: string;
 
-  @Column
+  @Column({
+    type: DataType.STRING,
+    field:"model"
+  })
+  @Field()
   model: string;
 
-  @Column
+  @Column({
+    type: DataType.INTEGER,
+    field:"year"
+  })
+  @Field((type) => Int)
   year: number;
 
-  @Column
+  @Column({
+    type: DataType.STRING,
+    field:"trim"
+  })
+  @Field()
   trim: string;
 
-  @Column
+  @Column({
+    type: DataType.STRING,
+    field:"fuelType"
+  })
+  @Field()
   fuelType: string;
 
-  @Column
+  @Column({
+    type: DataType.INTEGER,
+    field:"mileage"
+  })
+  @Field((type) => Int)
   mileage: number;
 
-  @Column
+  @Column({
+    type: DataType.INTEGER,
+    field:"treeRatio"
+  })
+  @Field((type) => Int)
   treeRatio: number;
 
-  @Column
+  @Column({
+    type: DataType.INTEGER,
+    field:"treePlanted"
+  })
+  @Field((type) => Int)
   treePlanted: number;
 
-  @Column
+  @Column({ type: DataType.STRING, field: "image", allowNull: true })
+  @Field({nullable: true})
   image?: string;
 
   @CreatedAt
-  @Column
+  @Column({ type: DataType.DATE, field: "createdAt" })
   createdAt!: Date;
 
   @UpdatedAt
-  @Column
+  @Column({ type: DataType.DATE, field: "updatedAt" })
   updatedAt: Date;
 
   @DeletedAt
-  deletedAt: Date;
+  @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
+  @Field({nullable: true})
+  deletedAt?: Date;
 }
+
+
+

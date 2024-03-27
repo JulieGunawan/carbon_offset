@@ -52,10 +52,21 @@
 
 
 import { Field, Int, ObjectType } from "@nestjs/graphql";
-import { Column, CreatedAt, DataType, DeletedAt, Model, UpdatedAt } from "sequelize-typescript";
+import { Column, CreatedAt, DataType, DeletedAt, Model, UpdatedAt, Table } from "sequelize-typescript";
 
 export const UserProvider = "USER_PROVIDER" as const;
 
+// export type UserAttributes = {
+//   id: number;
+//   name: string;
+//   email: string;
+//   password: string;
+//   role: string;
+//   avatar?: string;
+//   createdAt: Date;
+//   updatedAt: Date;
+//   deletedAt: Date;
+// };
 @ObjectType()
 export class User extends Model{
     @Column({
@@ -103,9 +114,9 @@ export class User extends Model{
     @Column({ type: DataType.DATE, field: "updatedAt" })
     updatedAt: Date;
 
-    // @DeletedAt
-    // @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
-    // @Field({nullable: true})
-    // deletedAt?: Date;
+    @DeletedAt
+    @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
+    @Field({nullable: true})
+    deletedAt?: Date;
 
 }

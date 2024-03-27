@@ -65,7 +65,7 @@ module.exports = {
   ];
 
   await queryInterface.bulkInsert(
-    "Vehicles",
+    "inventory",
     gennedVehicles.map((u, i) => ({
         ...u,
     })),
@@ -74,6 +74,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete("Vehicles", null, {});
+    return queryInterface.bulkDelete("inventory", null, {});
   }
 };
