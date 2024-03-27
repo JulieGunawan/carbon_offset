@@ -2,39 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  id: Int!
-  name: String!
-  email: String!
-  password: String!
-  role: String!
-}
-
-type Admin {
-  id: Int!
-  name: String!
-  email: String!
-  password: String!
-  role: String!
-}
-
-type Vehicle {
-  id: Int!
-  make: String!
-  model: String!
-  year: Int!
-  mileage: String!
-  fuelType: String!
-  trim: String!
-  treeRatio: Int!
-  treePlanted: Int!
-}
-
 type Query {
-  getUserById(id: Int!): User
-  getUsers: [User!]!
-  getAdminById(id: Int!): Admin
-  getAdmins: [Admin!]!
-  getVehicleById(id: Int!): Vehicle
-  getVehicles: [Vehicle!]!
+  getAllUsers: [User!]!
+}
+
+type User {
+  avatar: String
+  email: String!
+  id: Int!
+  name: String!
+  password: String!
+  role: String!
 }
