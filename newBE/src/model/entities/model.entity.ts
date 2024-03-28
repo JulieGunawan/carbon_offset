@@ -1,9 +1,10 @@
-import { Column, CreatedAt, DataType, DeletedAt, Model, Table, UpdatedAt } from "sequelize-typescript";
+import { BelongsTo, Column, CreatedAt, DataType, DeletedAt, ForeignKey, Model, Table, UpdatedAt } from "sequelize-typescript";
 import { Field, Float, Int } from "@nestjs/graphql";
+import { MakeEntity } from "src/make/entities/make.entity";
 
 export type ModelAttributes = {
     id: number;
-    makeId: number;
+    fkMakeId: number;
     model: string;
     treeRatio: number;
     createdAt: Date;
@@ -36,12 +37,17 @@ export class ModelEntity extends Model<ModelAttributes>{
       @Field()
       model: string;
 
+      @ForeignKey(() => MakeEntity)
       @Column({
         type: DataType.INTEGER,
-        field:"makeId"
+        allowNull: false,
+        field:"fkMakeId"
       })
       @Field((type) => Int)
-      makeId: number;
+      fkMakeId: number;
+
+      @BelongsTo(() => MakeEntity)
+      make: MakeEntity;
   
       @Column({
         type: DataType.FLOAT,

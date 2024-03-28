@@ -22,6 +22,9 @@ export class UserService {
     return await this.userModel.findByPk(id);
   }
 
+  // update(id: number, updateUserInput: UpdateUserInput) {
+  //   return `This action updates a #${id} user`;
+  // }
 
   //remove User from the role but not database
   async removeOne(id: number):Promise<UserEntity> {
@@ -33,6 +36,4 @@ export class UserService {
   }
 }
 
-  // update(id: number, updateUserInput: UpdateUserInput) {
-  //   return `This action updates a #${id} user`;
-  // }
+  

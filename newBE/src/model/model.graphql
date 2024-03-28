@@ -1,8 +1,9 @@
 type Model {
   # Example field (placeholder)
   id: Int!
-  makeId:Int!
+  fkMakeId:Int!
   model:String
+  make:Make
   treeRatio:Float!
   createdAt:Date!
   updatedAt:Date!

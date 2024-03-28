@@ -1,17 +1,21 @@
-import { Column, CreatedAt, DataType, DeletedAt, ForeignKey, Model, Table, UpdatedAt } from "sequelize-typescript";
+import { BelongsTo, Column, CreatedAt, DataType, DeletedAt, ForeignKey, Model, Table, UpdatedAt } from "sequelize-typescript";
 import { Field, Float, Int } from "@nestjs/graphql";
 import { UserEntity } from "src/user/entities/user.entity";
+import { MakeEntity } from "src/make/entities/make.entity";
+import { ModelEntity } from "src/model/entities/model.entity";
 
 export type InventoryAttributes = {
     id: number;
-    make: string;
-    model: string;
+    makeName: string;
+    modelName: string;
     trim: string;
     year: number;
     mileage:number,
     image?: string;
-    treeRatio?:number;
     treePlanted?:number;
+    fkUserId?:number;
+    fkModelId?:number;
+    fkMakeId?:number;
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date;
@@ -36,17 +40,17 @@ export class InventoryEntity extends Model<InventoryAttributes>{
     
       @Column({
         type: DataType.STRING,
-        field:"make"
+        field:"makeName"
       })
       @Field()
-      make: string;
+      makeName: string;
     
       @Column({
         type: DataType.STRING,
-        field:"model"
+        field:"modelName"
       })
       @Field()
-      model: string;
+      modelName: string;
     
       @Column({
         type: DataType.INTEGER,
@@ -77,13 +81,6 @@ export class InventoryEntity extends Model<InventoryAttributes>{
       mileage: number;
     
       @Column({
-        type: DataType.FLOAT,
-        field:"treeRatio"
-      })
-      @Field((type) => Float)
-      treeRatio: number;
-    
-      @Column({
         type: DataType.INTEGER,
         field:"treePlanted"
       })
@@ -93,6 +90,28 @@ export class InventoryEntity extends Model<InventoryAttributes>{
       @Column({ type: DataType.STRING, field: "image", allowNull: true })
       @Field({nullable: true})
       image?: string;
+
+      @ForeignKey(() => UserEntity)
+      @Column({
+        type: DataType.INTEGER,
+        field: "fkUserId",
+        allowNull: true,
+      })
+      fkUserId: number;
+
+      @BelongsTo(() => UserEntity)
+      user: UserEntity;
+
+      @ForeignKey(() => MakeEntity)
+      @Column({
+        type: DataType.INTEGER,
+        field: "fkMakeId",
+        allowNull: true,
+      })
+      fkMakeId: number;
+
+      @BelongsTo(() => MakeEntity)
+      make: MakeEntity;
     
       @CreatedAt
       @Column({ type: DataType.DATE, field: "createdAt" })
@@ -107,11 +126,5 @@ export class InventoryEntity extends Model<InventoryAttributes>{
       @Field({nullable: true})
       deletedAt?: Date;
   
-      @ForeignKey(() => UserEntity)
-      @Column({
-        type: DataType.INTEGER,
-        field: "fk_vehicle_id",
-        allowNull: false,
-    })
-      userId: number;
+      
 }

@@ -1,14 +1,16 @@
 type Inventory {
   # Example field (placeholder)
   id: Int!
-  make:String!
-  model:String!
+  makeName:String!
+  modelName:String!
   trim: String!
   year: Int!
   fuelType: String!
   image:String
   mileage:Int!
-  treeRatio:Float
+  fkUserId:Int
+  fkMakeId:Int
+  fkModelId:Int
   treePlanted:Int
   createdAt:Date!
   updatedAt:Date!

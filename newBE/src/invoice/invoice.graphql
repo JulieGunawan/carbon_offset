@@ -1,10 +1,7 @@
 type Invoice {
-
   orderId: Int!
   amount: Int!
   treePurchased: Int!
-  fkUserId: Int!
-  fkVehicleId: Int!
   createdAt:Date!
   updatedAt:Date!
   deletedAt:Date

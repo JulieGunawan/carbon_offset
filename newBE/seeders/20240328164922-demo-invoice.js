@@ -4,45 +4,42 @@ const newArray = (length) => (map) =>
     Promise.all(Array.from({ length }).map(() => map()));
 
 const genT = async (overrides) => {
-  const make = faker.vehicle.manufacturer();
+  const amount = parseInt(faker.finance.amount({ min:1, max:10000, dec:0}));
+  const treePurchased=amount;
   return {
-      make,
-      logo:
-          "https://www.freepik.com/free-vector/flat-design-car-service-logo_32283707.htm#query=super%20car%20logo&position=0&from_view=keyword&track=ais&uuid=c2c6dec4-7869-4551-b911-a83c06f73a36",
+      amount,
+      treePurchased,
       createdAt: new Date(),
       updatedAt: new Date(),
       ...overrides,
   };
 };
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const oneMake = await genT({
-      make: "Honda",
-      logo:
-          "https://images.app.goo.gl/DCbbUKsUTeYXNjNc9",
+    const oneOrder = await genT({
+      amount: "1000",
+      treePurchased: "1000",
       createdAt: new Date(),
       updatedAt: new Date()
     });
 
-    const twoMake = await genT({
-      make: "Ford",
-      logo:
-          "https://images.app.goo.gl/L7St4idSvPQbpLYF7",
+    const twoOrder = await genT({
+      amount: "2000",
+      treePurchased: "2000",
       createdAt: new Date(),
       updatedAt: new Date()
     });
 
-    const gennedMakes = [
-      oneMake,
-      twoMake,
+    const gennedOrders = [
+      oneOrder,
+      twoOrder,
       ...(await newArray(10)(genT)),
     ];
 
     await queryInterface.bulkInsert(
-      "Makes",
-      gennedMakes.map((u, i) => ({
+      "Invoices",
+      gennedOrders.map((u, i) => ({
           ...u,
       })),
       {}
@@ -50,6 +47,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete("inventory", null, {});
+    return queryInterface.bulkDelete("Invoices", null, {});
   }
 };
