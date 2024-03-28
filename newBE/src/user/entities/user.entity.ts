@@ -1,14 +1,17 @@
 import { Column, CreatedAt, DataType, DeletedAt, ForeignKey, HasMany, Model, Table, UpdatedAt } from "sequelize-typescript";
 import { Field, Int } from "@nestjs/graphql";
 import { InventoryEntity } from "src/inventory/entities/inventory.entity";
+import { InvoiceEntity } from "src/invoice/entities/invoice.entity";
 
 export type UserAttributes = {
-    id: number;
+    userId: number;
     name: string;
     email: string;
     password: string;
     role: string;
     avatar?: string;
+    inventory?: InventoryEntity[];
+    order?: InvoiceEntity[];
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date;
@@ -29,7 +32,7 @@ export class UserEntity extends Model<UserAttributes>{
         autoIncrement: true,
       })
       @Field((type) => Int)
-      id: number;
+      userId: number;
   
       @Column({
         type: DataType.STRING,
@@ -75,6 +78,7 @@ export class UserEntity extends Model<UserAttributes>{
       @HasMany(()=>InventoryEntity)
       inventory?: InventoryEntity[]
 
-      
+      @HasMany(()=>InvoiceEntity)
+      order?: InvoiceEntity[]
   
 }

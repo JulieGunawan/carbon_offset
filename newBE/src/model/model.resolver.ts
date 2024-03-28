@@ -20,18 +20,18 @@ export class ModelResolver {
     }
   }
 
-  // @Query('model')
-  // findOne(@Args('id') id: number) {
-  //   return this.modelService.findOne(id);
-  // }
+  @Query(()=>ModelEntity)
+  async getOneModelById(@Args('id') id: number): Promise<ModelEntity> {
+    return this.modelService.findOne(id);
+  }
 
   // @Mutation('updateModel')
   // update(@Args('updateModelInput') updateModelInput: UpdateModelInput) {
   //   return this.modelService.update(updateModelInput.id, updateModelInput);
   // }
 
-  // @Mutation('removeModel')
-  // remove(@Args('id') id: number) {
-  //   return this.modelService.remove(id);
-  // }
+  @Mutation(()=> Boolean)
+  async removeModelByName(@Args('model') model: string):Promise<Boolean> {
+    return await this.modelService.removeOne(model);
+  }
 }

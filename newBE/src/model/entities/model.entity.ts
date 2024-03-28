@@ -3,7 +3,7 @@ import { Field, Float, Int } from "@nestjs/graphql";
 import { MakeEntity } from "src/make/entities/make.entity";
 
 export type ModelAttributes = {
-    id: number;
+    modelId: number;
     fkMakeId: number;
     model: string;
     treeRatio: number;
@@ -27,7 +27,7 @@ export class ModelEntity extends Model<ModelAttributes>{
         autoIncrement: true,
       })
       @Field((type) => Int)
-      id: number;
+      modelId: number;
   
       @Column({
         type: DataType.STRING,

@@ -2,6 +2,8 @@ type Invoice {
   orderId: Int!
   amount: Int!
   treePurchased: Int!
+  fkVehicleId: Int!
+  fkUserId: Int!
   createdAt:Date!
   updatedAt:Date!
   deletedAt:Date
@@ -9,5 +11,5 @@ type Invoice {
 
 type Query {
   getAllInvoices: [Invoice]
-  getOneInvoice(orderId: Int!): Invoice
+  getOneInvoiceById(orderId: Int!): Invoice
 }

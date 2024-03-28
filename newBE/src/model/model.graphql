@@ -1,6 +1,6 @@
 type Model {
   # Example field (placeholder)
-  id: Int!
+  modelId: Int!
   fkMakeId:Int!
   model:String
   make:Make
@@ -21,10 +21,13 @@ input UpdateModelInput {
 
 type Query {
   getAllModels: [Model]
+  getOneModelById(id: Int!): Model
+  
 }
 
-#type Mutation {
+type Mutation {
   #createModel(createModelInput: CreateModelInput!): Model!
   #updateModel(updateModelInput: UpdateModelInput!): Model!
   #removeModel(id: Int!): Model
-#}
+  removeModelByName(model: String!): Boolean
+}

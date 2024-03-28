@@ -13,6 +13,7 @@ exports.UserEntity = exports.UserProvider = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const graphql_1 = require("@nestjs/graphql");
 const inventory_entity_1 = require("../../inventory/entities/inventory.entity");
+const invoice_entity_1 = require("../../invoice/entities/invoice.entity");
 exports.UserProvider = "USER_PROVIDER";
 let UserEntity = class UserEntity extends sequelize_typescript_1.Model {
 };
@@ -26,7 +27,7 @@ __decorate([
     }),
     (0, graphql_1.Field)((type) => graphql_1.Int),
     __metadata("design:type", Number)
-], UserEntity.prototype, "id", void 0);
+], UserEntity.prototype, "userId", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
@@ -80,6 +81,10 @@ __decorate([
     (0, sequelize_typescript_1.HasMany)(() => inventory_entity_1.InventoryEntity),
     __metadata("design:type", Array)
 ], UserEntity.prototype, "inventory", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => invoice_entity_1.InvoiceEntity),
+    __metadata("design:type", Array)
+], UserEntity.prototype, "order", void 0);
 exports.UserEntity = UserEntity = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: 'Users',

@@ -21,7 +21,7 @@ export class MakeResolver {
   }
 
   @Query(()=>MakeEntity)
-  async getOneMake(@Args('id') id: number): Promise<MakeEntity> {
+  async getOneMakeById(@Args('id') id: number): Promise<MakeEntity> {
     return this.makeService.findOne(id);
   }
 

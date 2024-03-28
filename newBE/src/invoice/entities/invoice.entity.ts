@@ -1,4 +1,4 @@
-import { BelongsTo, Column, CreatedAt, DataType, DeletedAt, ForeignKey, HasMany, Model, Table, UpdatedAt } from "sequelize-typescript";
+import { BelongsTo, Column, CreatedAt, DataType, DeletedAt, ForeignKey, Model, Table, UpdatedAt } from "sequelize-typescript";
 import { Field, Float, Int } from "@nestjs/graphql";
 import { UserEntity } from "src/user/entities/user.entity";
 import { InventoryEntity } from "src/inventory/entities/inventory.entity";
@@ -8,6 +8,8 @@ export type InvoiceAttributes = {
     orderId: number;
     amount: number;
     treePurchased: number;
+    fkUserId: number;
+    fkInventoryId: number;
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date;
@@ -43,28 +45,28 @@ export class InvoiceEntity extends Model<InvoiceAttributes>{
         field:"treePurchased"
     })
     @Field((type) => Int)
-    treePurchase: number;
+    treePurchased: number;
   
-    // @ForeignKey(() => UserEntity)
-    // @Column({
-    // type: DataType.INTEGER,
-    // field:"fkUserId",
-    // allowNull: false
-    // })
-    // fkUserId: number;
+    @ForeignKey(() => UserEntity)
+    @Column({
+    type: DataType.INTEGER,
+    field:"fkUserId",
+    allowNull: false
+    })
+    fkUserId: number;
 
-    // @BelongsTo(() => UserEntity)
-    // user: UserEntity;
+    @BelongsTo(() => UserEntity)
+    user: UserEntity;
   
-    // @Column({ 
-    // type: DataType.STRING, 
-    // field: "fkVehicleId",
-    // allowNull: false })
-    // @ForeignKey(()=>InventoryEntity)
-    // fkVehicleId: number;
+    @Column({ 
+    type: DataType.STRING, 
+    field: "fkVehicleId",
+    allowNull: false })
+    @ForeignKey(()=>InventoryEntity)
+    fkVehicleId: number;
 
-    // @BelongsTo(() => InventoryEntity)
-    // inventory: InventoryEntity;
+    @BelongsTo(() => InventoryEntity)
+    inventory: InventoryEntity;
   
     @CreatedAt
     @Column({ type: DataType.DATE, field: "createdAt" })

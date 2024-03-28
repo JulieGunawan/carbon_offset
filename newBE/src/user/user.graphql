@@ -1,12 +1,14 @@
 scalar Date 
 
 type User {
-  id: Int!
+  userId: Int!
   name:String!
   email:String!
   password:String!
   role:String!
   avatar:String
+  inventory: [Inventory]
+  order: [Invoice]
   createdAt:Date!
   updatedAt:Date!
   deletedAt:Date

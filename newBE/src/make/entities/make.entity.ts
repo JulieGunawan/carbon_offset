@@ -1,11 +1,13 @@
 // export class Make {}
 
-import { Column, CreatedAt, DataType, DeletedAt, Model, Table, UpdatedAt } from "sequelize-typescript";
+import { Column, CreatedAt, DataType, DeletedAt, HasMany, Model, Table, UpdatedAt } from "sequelize-typescript";
 import { Field, Int } from "@nestjs/graphql";
+import { ModelEntity } from "src/model/entities/model.entity";
 
 export type MakeAttributes = {
-    id: number;
+    makeId: number;
     make: string;
+    models?: ModelEntity[];
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date;
@@ -26,7 +28,7 @@ export class MakeEntity extends Model<MakeAttributes>{
         autoIncrement: true,
       })
       @Field((type) => Int)
-      id: number;
+      makeId: number;
   
       @Column({
         type: DataType.STRING,
@@ -56,5 +58,8 @@ export class MakeEntity extends Model<MakeAttributes>{
       @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
       @Field({nullable: true})
       deletedAt?: Date;
+
+      @HasMany(() => ModelEntity)
+      models?: ModelEntity[]
   
 }

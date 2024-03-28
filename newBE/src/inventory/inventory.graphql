@@ -1,6 +1,6 @@
 type Inventory {
   # Example field (placeholder)
-  id: Int!
+  vehicleId: Int!
   makeName:String!
   modelName:String!
   trim: String!
@@ -29,7 +29,7 @@ input UpdateInventoryInput {
 type Query {
   inventory: [Inventory]!
   getAllInventories: [Inventory]
-  getOneInventory(id:Int!): Inventory
+  getOneInventoryById(id:Int!): Inventory
 }
 
 type Mutation {

@@ -1,11 +1,11 @@
-import { BelongsTo, Column, CreatedAt, DataType, DeletedAt, ForeignKey, Model, Table, UpdatedAt } from "sequelize-typescript";
+import { BelongsTo, Column, CreatedAt, DataType, DeletedAt, ForeignKey, HasOne, Model, Table, UpdatedAt } from "sequelize-typescript";
 import { Field, Float, Int } from "@nestjs/graphql";
 import { UserEntity } from "src/user/entities/user.entity";
 import { MakeEntity } from "src/make/entities/make.entity";
 import { ModelEntity } from "src/model/entities/model.entity";
 
 export type InventoryAttributes = {
-    id: number;
+    vehicleId: number;
     makeName: string;
     modelName: string;
     trim: string;
@@ -36,7 +36,7 @@ export class InventoryEntity extends Model<InventoryAttributes>{
         autoIncrement: true,
       })
       @Field((type) => Int)
-      id: number;
+      vehicleId: number;
     
       @Column({
         type: DataType.STRING,
@@ -112,6 +112,17 @@ export class InventoryEntity extends Model<InventoryAttributes>{
 
       @BelongsTo(() => MakeEntity)
       make: MakeEntity;
+
+      @ForeignKey(() => ModelEntity)
+      @Column({
+        type: DataType.INTEGER,
+        field: "fkModelId",
+        allowNull: true,
+      })
+      fkModelId: number;
+
+      @BelongsTo(() => ModelEntity)
+      model: ModelEntity;
     
       @CreatedAt
       @Column({ type: DataType.DATE, field: "createdAt" })

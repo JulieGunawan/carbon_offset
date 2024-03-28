@@ -1,9 +1,10 @@
 scalar Date 
 
 type Make {
-  id: Int!
+  makeId: Int!
   make:String!
   logo:String
+  model:[Model]
   createdAt:Date!
   updatedAt:Date!
   deletedAt:Date
@@ -20,7 +21,7 @@ input UpdateMakeInput {
 
 type Query {
   getAllMakes: [Make]
-  getOneMake(id: Int!): Make
+  getOneMakeById(id: Int!): Make
 }
 
 #type Mutation {

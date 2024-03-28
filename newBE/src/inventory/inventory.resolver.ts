@@ -21,7 +21,7 @@ export class InventoryResolver {
   }
 
   @Query(()=>InventoryEntity)
-  getOneInventory(@Args('id') id: number): Promise<InventoryEntity> {
+  getOneInventoryById(@Args('id') id: number): Promise<InventoryEntity> {
     return this.inventoryService.findOne(id);
   }
 

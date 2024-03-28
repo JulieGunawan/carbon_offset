@@ -21,7 +21,7 @@ export class InvoiceResolver {
   }
   
   @Query(()=>InvoiceEntity)
-  getOneInvoice(@Args('orderId') orderId: number) {
+  getOneInvoiceById(@Args('orderId') orderId: number) {
     return this.invoiceService.findOne(orderId);
   }
 
