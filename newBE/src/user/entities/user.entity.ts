@@ -1,5 +1,6 @@
-import { Column, CreatedAt, DataType, DeletedAt, Model, Table, UpdatedAt } from "sequelize-typescript";
+import { Column, CreatedAt, DataType, DeletedAt, ForeignKey, HasMany, Model, Table, UpdatedAt } from "sequelize-typescript";
 import { Field, Int } from "@nestjs/graphql";
+import { InventoryEntity } from "src/inventory/entities/inventory.entity";
 
 export type UserAttributes = {
     id: number;
@@ -8,6 +9,9 @@ export type UserAttributes = {
     password: string;
     role: string;
     avatar?: string;
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt: Date;
 }
 
 export const UserProvider = "USER_PROVIDER" as const;
@@ -67,5 +71,10 @@ export class UserEntity extends Model<UserAttributes>{
       @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
       @Field({nullable: true})
       deletedAt?: Date;
+
+      @HasMany(()=>InventoryEntity)
+      inventory?: InventoryEntity[]
+
+      
   
 }

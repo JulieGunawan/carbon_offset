@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserEntity = exports.UserProvider = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const graphql_1 = require("@nestjs/graphql");
+const inventory_entity_1 = require("../../inventory/entities/inventory.entity");
 exports.UserProvider = "USER_PROVIDER";
 let UserEntity = class UserEntity extends sequelize_typescript_1.Model {
 };
@@ -75,6 +76,10 @@ __decorate([
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Date)
 ], UserEntity.prototype, "deletedAt", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => inventory_entity_1.InventoryEntity),
+    __metadata("design:type", Array)
+], UserEntity.prototype, "inventory", void 0);
 exports.UserEntity = UserEntity = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: 'Users',

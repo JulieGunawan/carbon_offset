@@ -1,5 +1,6 @@
-import { Column, CreatedAt, DataType, DeletedAt, Model, Table, UpdatedAt } from "sequelize-typescript";
+import { Column, CreatedAt, DataType, DeletedAt, ForeignKey, Model, Table, UpdatedAt } from "sequelize-typescript";
 import { Field, Float, Int } from "@nestjs/graphql";
+import { UserEntity } from "src/user/entities/user.entity";
 
 export type InventoryAttributes = {
     id: number;
@@ -106,4 +107,11 @@ export class InventoryEntity extends Model<InventoryAttributes>{
       @Field({nullable: true})
       deletedAt?: Date;
   
+      @ForeignKey(() => UserEntity)
+      @Column({
+        type: DataType.INTEGER,
+        field: "fk_vehicle_id",
+        allowNull: false,
+    })
+      userId: number;
 }

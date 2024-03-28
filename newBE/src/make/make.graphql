@@ -19,9 +19,8 @@ input UpdateMakeInput {
 }
 
 type Query {
-#  make: [Make]!
   getAllMakes: [Make]
-  #getOneUser(id: Int!): User
+  getOneMake(id: Int!): Make
 }
 
 #type Mutation {

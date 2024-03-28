@@ -10,6 +10,7 @@ import { InventoryModule } from './inventory/inventory.module';
 import { InventoryEntity } from './inventory/entities/inventory.entity';
 import { MakeModule } from './make/make.module';
 import { MakeEntity } from './make/entities/make.entity';
+import { ModelModule } from './model/model.module';
 
 @Module({
   imports: [ 
@@ -31,6 +32,7 @@ import { MakeEntity } from './make/entities/make.entity';
     UserModule,
     InventoryModule,
     MakeModule,
+    ModelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

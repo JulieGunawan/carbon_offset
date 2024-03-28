@@ -20,10 +20,10 @@ export class MakeResolver {
     }
   }
 
-//   @Query('make')
-//   findOne(@Args('id') id: number) {
-//     return this.makeService.findOne(id);
-//   }
+  @Query(()=>MakeEntity)
+  async getOneMake(@Args('id') id: number): Promise<MakeEntity> {
+    return this.makeService.findOne(id);
+  }
 
 //   @Mutation('updateMake')
 //   update(@Args('updateMakeInput') updateMakeInput: UpdateMakeInput) {

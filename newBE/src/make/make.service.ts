@@ -18,9 +18,9 @@ export class MakeService {
     return await this.makeModel.findAll();
   }
 
-//   findOne(id: number) {
-//     return `This action returns a #${id} make`;
-//   }
+    async findOne(id: number): Promise<MakeEntity> {
+      return await this.makeModel.findByPk(id);
+    }
 
 //   update(id: number, updateMakeInput: UpdateMakeInput) {
 //     return `This action updates a #${id} make`;
