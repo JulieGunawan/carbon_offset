@@ -14,7 +14,7 @@ export class ModelResolver {
   // }
 
   @Query(()=>[ModelEntity])
-  async getAllUsers(): Promise<ModelEntity[]>{
+  async getAllModels(): Promise<ModelEntity[]>{
     {
       return await this.modelService.findAll();
     }

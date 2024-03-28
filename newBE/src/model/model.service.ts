@@ -7,7 +7,7 @@ import { ModelEntity, ModelProvider } from './entities/model.entity';
 export class ModelService {
 
   constructor(
-    @Inject(ModelProvider) private userModel: typeof ModelEntity
+    @Inject(ModelProvider) private modelModel: typeof ModelEntity
     ) {}
 
   // create(createModelInput: CreateModelInput) {
@@ -15,7 +15,7 @@ export class ModelService {
   // }
 
   async findAll(): Promise<ModelEntity[]> {
-    return await this.userModel.findAll();
+    return await this.modelModel.findAll();
   }
 
   // findOne(id: number) {

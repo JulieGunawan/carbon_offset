@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { UserEntity, UserProvider } from './entities/user.entity';
+import { isEmpty } from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -21,11 +22,17 @@ export class UserService {
     return await this.userModel.findByPk(id);
   }
 
+
+  //remove User from the role but not database
+  async removeOne(id: number):Promise<UserEntity> {
+    const removedUser = (await this.userModel.findByPk(id)).update({ role:'', deletedAt: new Date() });
+    if (!removedUser) {
+      throw new Error(`User with ID ${id} not found.`);
+    }
+    return await removedUser;
+  }
+}
+
   // update(id: number, updateUserInput: UpdateUserInput) {
   //   return `This action updates a #${id} user`;
   // }
-
-  // remove(id: number) {
-  //   return `This action removes a #${id} user`;
-  // }
-}

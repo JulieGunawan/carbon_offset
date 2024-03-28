@@ -11,6 +11,9 @@ import { InventoryEntity } from './inventory/entities/inventory.entity';
 import { MakeModule } from './make/make.module';
 import { MakeEntity } from './make/entities/make.entity';
 import { ModelModule } from './model/model.module';
+import { InvoiceEntity } from './invoice/entities/invoice.entity';
+import { InvoiceModule } from './invoice/invoice.module';
+import { ModelEntity } from './model/entities/model.entity';
 
 @Module({
   imports: [ 
@@ -27,12 +30,13 @@ import { ModelModule } from './model/model.module';
       username: 'admin',
       password: '142536',
       database: 'mydb',
-      models: [UserEntity, InventoryEntity, MakeEntity],
+      models: [UserEntity, InventoryEntity, MakeEntity, InvoiceEntity, ModelEntity],
     }),
     UserModule,
     InventoryModule,
     MakeModule,
     ModelModule,
+    InvoiceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

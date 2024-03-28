@@ -1,5 +1,5 @@
 import { Column, CreatedAt, DataType, DeletedAt, Model, Table, UpdatedAt } from "sequelize-typescript";
-import { Field, Int } from "@nestjs/graphql";
+import { Field, Float, Int } from "@nestjs/graphql";
 
 export type ModelAttributes = {
     id: number;
@@ -37,17 +37,17 @@ export class ModelEntity extends Model<ModelAttributes>{
       model: string;
 
       @Column({
-        type: DataType.STRING,
+        type: DataType.INTEGER,
         field:"makeId"
       })
-      @Field()
+      @Field((type) => Int)
       makeId: number;
   
       @Column({
         type: DataType.FLOAT,
         field:"treeRatio"
       })
-      @Field()
+      @Field((type) => Float)
       treeRatio: number;
   
       @CreatedAt

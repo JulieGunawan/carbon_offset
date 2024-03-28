@@ -4,6 +4,9 @@ type Model {
   makeId:Int!
   model:String
   treeRatio:Float!
+  createdAt:Date!
+  updatedAt:Date!
+  deletedAt:Date
 }
 
 input CreateModelInput {
@@ -16,13 +19,11 @@ input UpdateModelInput {
 }
 
 type Query {
-  #model: [Model]!
   getAllModels: [Model]
-  #model(id: Int!): Model
 }
 
-type Mutation {
-  createModel(createModelInput: CreateModelInput!): Model!
-  updateModel(updateModelInput: UpdateModelInput!): Model!
-  removeModel(id: Int!): Model
-}
+#type Mutation {
+  #createModel(createModelInput: CreateModelInput!): Model!
+  #updateModel(updateModelInput: UpdateModelInput!): Model!
+  #removeModel(id: Int!): Model
+#}

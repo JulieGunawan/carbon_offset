@@ -24,11 +24,11 @@ input UpdateUserInput {
 type Query {
 #  user: [User]!
   getAllUsers: [User]
-  getOneUser(id: Int!): User
+  getOneUserById(id: Int!): User
 }
 
-#type Mutation {
+type Mutation {
 #  createUser(createUserInput: CreateUserInput!): User!
 #  updateUser(updateUserInput: UpdateUserInput!): User!
-#  removeUser(id: Int!): User
-#}
+  removeUserById(id: Int!): User!
+}

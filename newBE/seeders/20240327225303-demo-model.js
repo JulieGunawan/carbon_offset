@@ -5,9 +5,11 @@ const newArray = (length) => (map) =>
 
 const genT = async (overrides) => {
   const model = faker.vehicle.model();
+  const treeRatio=0.015;
   return {
       model,
-      make_id: ,
+      makeId: 1,
+      treeRatio,
       createdAt: new Date(),
       updatedAt: new Date(),
       ...overrides,
@@ -18,30 +20,30 @@ const genT = async (overrides) => {
 module.exports = {
   async up (queryInterface, Sequelize) {
     const oneMake = await genT({
-      make: "Honda",
-      logo:
-          "https://images.app.goo.gl/DCbbUKsUTeYXNjNc9",
+      model: "Accord",
+      makeId:1,
+      treeRatio: 0.001,
       createdAt: new Date(),
       updatedAt: new Date()
   });
 
   const twoMake = await genT({
-    make: "Ford",
-    logo:
-        "https://images.app.goo.gl/L7St4idSvPQbpLYF7",
+    model: "Escape",
+    treeRatio:0.005,
+    makeId:2,
     createdAt: new Date(),
     updatedAt: new Date()
   });
 
-  const gennedMakes = [
+  const gennedModels = [
     oneMake,
     twoMake,
     ...(await newArray(10)(genT)),
   ];
 
   await queryInterface.bulkInsert(
-    "Makes",
-    gennedMakes.map((u, i) => ({
+    "Models",
+    gennedModels.map((u, i) => ({
         ...u,
     })),
     {}
@@ -49,6 +51,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete("inventory", null, {});
+    return queryInterface.bulkDelete("Models", null, {});
   }
 };

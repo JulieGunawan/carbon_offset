@@ -25,6 +25,13 @@ let UserService = class UserService {
     async findOne(id) {
         return await this.userModel.findByPk(id);
     }
+    async removeOne(id) {
+        const removedUser = (await this.userModel.findByPk(id)).update({ role: '', deletedAt: new Date() });
+        if (!removedUser) {
+            throw new Error(`User with ID ${id} not found.`);
+        }
+        return await removedUser;
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

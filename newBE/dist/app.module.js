@@ -20,6 +20,9 @@ const inventory_entity_1 = require("./inventory/entities/inventory.entity");
 const make_module_1 = require("./make/make.module");
 const make_entity_1 = require("./make/entities/make.entity");
 const model_module_1 = require("./model/model.module");
+const invoice_entity_1 = require("./invoice/entities/invoice.entity");
+const invoice_module_1 = require("./invoice/invoice.module");
+const model_entity_1 = require("./model/entities/model.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -38,12 +41,13 @@ exports.AppModule = AppModule = __decorate([
                 username: 'admin',
                 password: '142536',
                 database: 'mydb',
-                models: [user_entity_1.UserEntity, inventory_entity_1.InventoryEntity, make_entity_1.MakeEntity],
+                models: [user_entity_1.UserEntity, inventory_entity_1.InventoryEntity, make_entity_1.MakeEntity, invoice_entity_1.InvoiceEntity, model_entity_1.ModelEntity],
             }),
             user_module_1.UserModule,
             inventory_module_1.InventoryModule,
             make_module_1.MakeModule,
             model_module_1.ModelModule,
+            invoice_module_1.InvoiceModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

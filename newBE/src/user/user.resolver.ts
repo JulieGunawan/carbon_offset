@@ -3,6 +3,8 @@ import { UserService } from './user.service';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { UserEntity } from './entities/user.entity';
+import { INTEGER } from 'sequelize';
+
 
 @Resolver('User')
 export class UserResolver {
@@ -21,7 +23,7 @@ export class UserResolver {
   }
 
   @Query(()=>UserEntity)
-  async getOneUser(@Args('id') id: number): Promise<UserEntity> {
+  async getOneUserById(@Args('id') id: number): Promise<UserEntity> {
     return this.userService.findOne(id);
   }
 
@@ -30,8 +32,8 @@ export class UserResolver {
   //   return this.userService.update(updateUserInput.id, updateUserInput);
   // }
 
-  // @Mutation('removeUser')
-  // remove(@Args('id') id: number) {
-  //   return this.userService.remove(id);
-  // }
+  @Mutation(()=> UserEntity)
+  async removeUserById(@Args('id') id: number) {
+    return await this.userService.removeOne(id);
+  }
 }

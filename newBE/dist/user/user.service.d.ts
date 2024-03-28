@@ -4,4 +4,5 @@ export declare class UserService {
     constructor(userModel: typeof UserEntity);
     findAll(): Promise<UserEntity[]>;
     findOne(id: number): Promise<UserEntity>;
+    removeOne(id: number): Promise<UserEntity>;
 }
