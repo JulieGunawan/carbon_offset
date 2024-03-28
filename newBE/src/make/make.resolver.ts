@@ -8,7 +8,7 @@ import { MakeEntity } from './entities/make.entity';
 export class MakeResolver {
   constructor(private readonly makeService: MakeService) {}
 
-  @Mutation('createMake')
+  @Mutation(()=>MakeEntity)
   createMake(@Args('createMakeInput') createMakeInput: CreateMakeInput) {
     return this.makeService.create(createMakeInput);
   }

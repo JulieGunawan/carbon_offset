@@ -2,7 +2,7 @@ type Model {
   # Example field (placeholder)
   model_id: Int!
   fk_make_id:Int!
-  model:String
+  model: String!
   tree_to_km:Float!
   created_at:Date!
   updated_at:Date!
@@ -10,8 +10,9 @@ type Model {
 }
 
 input CreateModelInput {
-  # Example field (placeholder)
-  exampleField: Int
+  model: String!,
+  tree_to_km: Float!,
+  fk_make_id: Int!
 }
 
 input UpdateModelInput {
@@ -25,7 +26,7 @@ type Query {
 }
 
 type Mutation {
-  #createModel(createModelInput: CreateModelInput!): Model!
+  createModel(createModelInput: CreateModelInput!): Model!
   #updateModel(updateModelInput: UpdateModelInput!): Model!
   #removeModel(id: Int!): Model
   removeModelByName(model: String!): Boolean

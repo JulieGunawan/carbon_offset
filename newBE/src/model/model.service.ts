@@ -11,9 +11,13 @@ export class ModelService {
     @Inject(ModelProvider) private modelModel: typeof ModelEntity
     ) {}
 
-  // create(createModelInput: CreateModelInput) {
-  //   return 'This action adds a new model';
-  // }
+  async create(createModelInput: CreateModelInput):Promise<ModelEntity> {
+    return await this.modelModel.create({
+      model: createModelInput.model,
+      fk_make_id: createModelInput.fk_make_id,
+      tree_to_km: createModelInput.tree_to_km
+    })
+  }
 
   async findAll(): Promise<ModelEntity[]> {
     return await this.modelModel.findAll();

@@ -8,10 +8,10 @@ import { ModelEntity } from 'src/model/entities/model.entity';
 export class ModelResolver {
   constructor(private readonly modelService: ModelService) {}
 
-  // @Mutation('createModel')
-  // create(@Args('createModelInput') createModelInput: CreateModelInput) {
-  //   return this.modelService.create(createModelInput);
-  // }
+  @Mutation(()=>ModelEntity)
+  createModel(@Args('createModelInput') createModelInput: CreateModelInput) {
+    return this.modelService.create(createModelInput);
+  }
 
   @Query(()=>[ModelEntity])
   async getAllModels(): Promise<ModelEntity[]>{
