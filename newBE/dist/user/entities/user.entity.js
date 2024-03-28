@@ -27,7 +27,7 @@ __decorate([
     }),
     (0, graphql_1.Field)((type) => graphql_1.Int),
     __metadata("design:type", Number)
-], UserEntity.prototype, "userId", void 0);
+], UserEntity.prototype, "user_id", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
@@ -40,6 +40,8 @@ __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         validate: { isEmail: true, isLowercase: true },
+        field: "email",
+        allowNull: false
     }),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
@@ -47,12 +49,14 @@ __decorate([
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
+        field: "password",
+        allowNull: false
     }),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], UserEntity.prototype, "password", void 0);
 __decorate([
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, field: "role" }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, field: "role", allowNull: false }),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], UserEntity.prototype, "role", void 0);
@@ -63,20 +67,20 @@ __decorate([
 ], UserEntity.prototype, "avatar", void 0);
 __decorate([
     sequelize_typescript_1.CreatedAt,
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "createdAt" }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "created_at" }),
     __metadata("design:type", Date)
-], UserEntity.prototype, "createdAt", void 0);
+], UserEntity.prototype, "created_at", void 0);
 __decorate([
     sequelize_typescript_1.UpdatedAt,
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "updatedAt" }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "updated_at" }),
     __metadata("design:type", Date)
-], UserEntity.prototype, "updatedAt", void 0);
+], UserEntity.prototype, "updated_at", void 0);
 __decorate([
     sequelize_typescript_1.DeletedAt,
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "deletedAt", allowNull: true }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, field: "deleted_at", allowNull: true }),
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Date)
-], UserEntity.prototype, "deletedAt", void 0);
+], UserEntity.prototype, "deleted_at", void 0);
 __decorate([
     (0, sequelize_typescript_1.HasMany)(() => inventory_entity_1.InventoryEntity),
     __metadata("design:type", Array)

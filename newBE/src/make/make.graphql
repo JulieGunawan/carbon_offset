@@ -1,18 +1,17 @@
 scalar Date 
 
 type Make {
-  makeId: Int!
+  make_id: Int!
   make:String!
   logo:String
   model:[Model]
-  createdAt:Date!
-  updatedAt:Date!
-  deletedAt:Date
+  created_at:Date!
+  updated_at:Date!
+  deleted_at:Date
 }
 
 input CreateMakeInput {
-  # Example field (placeholder)
-  exampleField: Int
+  make: String
 }
 
 input UpdateMakeInput {
@@ -24,8 +23,11 @@ type Query {
   getOneMakeById(id: Int!): Make
 }
 
-#type Mutation {
+type Mutation {
 #  createUser(createUserInput: CreateUserInput!): User!
+   createMake(createMakeInput: CreateMakeInput!): Make!
 #  updateUser(updateUserInput: UpdateUserInput!): User!
 #  removeUser(id: Int!): User
-#}
+  removeMakeById(id: Int!): Boolean
+  #removeMakeByName(make: String!): Boolean
+}

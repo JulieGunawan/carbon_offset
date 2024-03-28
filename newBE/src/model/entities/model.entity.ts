@@ -3,13 +3,13 @@ import { Field, Float, Int } from "@nestjs/graphql";
 import { MakeEntity } from "src/make/entities/make.entity";
 
 export type ModelAttributes = {
-    modelId: number;
-    fkMakeId: number;
+    model_id: number;
+    fk_make_id: number;
     model: string;
-    treeRatio: number;
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt: Date;
+    tree_to_km: number;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at: Date;
 }
 
 export const ModelProvider = "MODEL_PROVIDER" as const;
@@ -27,7 +27,7 @@ export class ModelEntity extends Model<ModelAttributes>{
         autoIncrement: true,
       })
       @Field((type) => Int)
-      modelId: number;
+      model_id: number;
   
       @Column({
         type: DataType.STRING,
@@ -35,38 +35,38 @@ export class ModelEntity extends Model<ModelAttributes>{
         allowNull: false
       })
       @Field()
-      model: string;
+      model!: string;
 
       @ForeignKey(() => MakeEntity)
       @Column({
         type: DataType.INTEGER,
         allowNull: false,
-        field:"fkMakeId"
+        field:"fk_make_id"
       })
       @Field((type) => Int)
-      fkMakeId: number;
+      fk_make_id!: number;
 
       @BelongsTo(() => MakeEntity)
       make: MakeEntity;
   
       @Column({
         type: DataType.FLOAT,
-        field:"treeRatio"
+        field:"tree_to_km"
       })
       @Field((type) => Float)
-      treeRatio: number;
+      tree_to_km: number;
   
       @CreatedAt
-      @Column({ type: DataType.DATE, field: "createdAt" })
-      createdAt!: Date;
+      @Column({ type: DataType.DATE, field: "created_at" })
+      created_at!: Date;
   
       @UpdatedAt
-      @Column({ type: DataType.DATE, field: "updatedAt" })
-      updatedAt: Date;
+      @Column({ type: DataType.DATE, field: "updated_at" })
+      updated_at: Date;
   
       @DeletedAt
-      @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
+      @Column({ type: DataType.DATE, field: "deleted_at", allowNull:true })
       @Field({nullable: true})
-      deletedAt?: Date;
+      deleted_at?: Date;
   
 }

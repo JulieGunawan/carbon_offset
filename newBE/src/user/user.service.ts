@@ -28,7 +28,7 @@ export class UserService {
 
   //remove User from the role but not database
   async removeOne(id: number):Promise<UserEntity> {
-    const removedUser = (await this.userModel.findByPk(id)).update({ role:'', deletedAt: new Date() });
+    const removedUser = (await this.userModel.findByPk(id)).update({ role:'', deleted_at: new Date() });
     if (!removedUser) {
       throw new Error(`User with ID ${id} not found.`);
     }

@@ -5,14 +5,14 @@ import { InventoryEntity } from "src/inventory/entities/inventory.entity";
 
 
 export type InvoiceAttributes = {
-    orderId: number;
+    order_id: number;
     amount: number;
-    treePurchased: number;
-    fkUserId: number;
-    fkInventoryId: number;
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt: Date;
+    tpurchased_tree: number;
+    fk_user_id: number;
+    fk_inventory_id: number;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at: Date;
 }
 
 export const InvoiceProvider = "INVOICE_PROVIDER" as const;
@@ -31,54 +31,56 @@ export class InvoiceEntity extends Model<InvoiceAttributes>{
         autoIncrement: true,
       })
     @Field((type) => Int)
-    orderId: number;
+    order_id: number;
   
     @Column({
         type: DataType.FLOAT,
-        field:"amount"
+        field:"amount",
+        allowNull: false
     })
     @Field((type) => Float)
-    amount: number;
+    amount!: number;
 
     @Column({
         type: DataType.INTEGER,
-        field:"treePurchased"
+        field:"purchased_tree",
+        allowNull: false
     })
     @Field((type) => Int)
-    treePurchased: number;
+    purchased_tree!: number;
   
     @ForeignKey(() => UserEntity)
     @Column({
     type: DataType.INTEGER,
-    field:"fkUserId",
+    field:"fk_user_id",
     allowNull: false
     })
-    fkUserId: number;
+    fk_user_id!: number;
 
     @BelongsTo(() => UserEntity)
     user: UserEntity;
   
     @Column({ 
     type: DataType.STRING, 
-    field: "fkVehicleId",
+    field: "fk_vehicle_id",
     allowNull: false })
     @ForeignKey(()=>InventoryEntity)
-    fkVehicleId: number;
+    fk_vehicle_id!: number;
 
     @BelongsTo(() => InventoryEntity)
     inventory: InventoryEntity;
   
     @CreatedAt
-    @Column({ type: DataType.DATE, field: "createdAt" })
-    createdAt!: Date;
+    @Column({ type: DataType.DATE, field: "created_at" })
+    created_at!: Date;
 
     @UpdatedAt
-    @Column({ type: DataType.DATE, field: "updatedAt" })
-    updatedAt: Date;
+    @Column({ type: DataType.DATE, field: "updated_at" })
+    updated_at: Date;
 
     @DeletedAt
-    @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
+    @Column({ type: DataType.DATE, field: "deleted_at", allowNull:true })
     @Field({nullable: true})
-    deletedAt?: Date;
+    deleted_at?: Date;
   
 }

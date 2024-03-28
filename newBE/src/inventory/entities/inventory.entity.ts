@@ -5,20 +5,22 @@ import { MakeEntity } from "src/make/entities/make.entity";
 import { ModelEntity } from "src/model/entities/model.entity";
 
 export type InventoryAttributes = {
-    vehicleId: number;
-    makeName: string;
-    modelName: string;
+    inventory_id: number;
+    make: string;
+    model: string;
     trim: string;
     year: number;
+    fuel_type: string;
     mileage:number,
+    tree_to_km:number;
+    planted_tree:number;
     image?: string;
-    treePlanted?:number;
-    fkUserId?:number;
-    fkModelId?:number;
-    fkMakeId?:number;
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt: Date;
+    fk_user_id:number;
+    fk_model_id:number;
+    fk_make_id:number;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at: Date;
 }
 
 export const InventoryProvider = "INVENTORY_PROVIDER" as const;
@@ -36,21 +38,21 @@ export class InventoryEntity extends Model<InventoryAttributes>{
         autoIncrement: true,
       })
       @Field((type) => Int)
-      vehicleId: number;
+      inventory_id: number;
     
       @Column({
         type: DataType.STRING,
-        field:"makeName"
+        field:"make"
       })
       @Field()
-      makeName: string;
+      make: string;
     
       @Column({
         type: DataType.STRING,
-        field:"modelName"
+        field:"model"
       })
       @Field()
-      modelName: string;
+      model: string;
     
       @Column({
         type: DataType.INTEGER,
@@ -68,10 +70,10 @@ export class InventoryEntity extends Model<InventoryAttributes>{
     
       @Column({
         type: DataType.STRING,
-        field:"fuelType"
+        field:"fuel_type"
       })
       @Field()
-      fuelType: string;
+      fuel_type: string;
     
       @Column({
         type: DataType.INTEGER,
@@ -82,10 +84,10 @@ export class InventoryEntity extends Model<InventoryAttributes>{
     
       @Column({
         type: DataType.INTEGER,
-        field:"treePlanted"
+        field:"planted_tree"
       })
       @Field((type) => Int)
-      treePlanted: number;
+      planted_tree: number;
     
       @Column({ type: DataType.STRING, field: "image", allowNull: true })
       @Field({nullable: true})
@@ -94,10 +96,10 @@ export class InventoryEntity extends Model<InventoryAttributes>{
       @ForeignKey(() => UserEntity)
       @Column({
         type: DataType.INTEGER,
-        field: "fkUserId",
-        allowNull: true,
+        field: "fk_user_id",
+        allowNull: false,
       })
-      fkUserId: number;
+      fk_user_id: number;
 
       @BelongsTo(() => UserEntity)
       user: UserEntity;
@@ -105,37 +107,37 @@ export class InventoryEntity extends Model<InventoryAttributes>{
       @ForeignKey(() => MakeEntity)
       @Column({
         type: DataType.INTEGER,
-        field: "fkMakeId",
+        field: "fk_make_id",
         allowNull: true,
       })
-      fkMakeId: number;
+      fk_make_id: number;
 
       @BelongsTo(() => MakeEntity)
-      make: MakeEntity;
+      make_entity: MakeEntity;
 
       @ForeignKey(() => ModelEntity)
       @Column({
         type: DataType.INTEGER,
-        field: "fkModelId",
+        field: "fk_model_id",
         allowNull: true,
       })
-      fkModelId: number;
+      fk_model_id: number;
 
       @BelongsTo(() => ModelEntity)
-      model: ModelEntity;
+      model_entity: ModelEntity;
     
       @CreatedAt
-      @Column({ type: DataType.DATE, field: "createdAt" })
-      createdAt!: Date;
+      @Column({ type: DataType.DATE, field: "created_at" })
+      created_at!: Date;
     
       @UpdatedAt
-      @Column({ type: DataType.DATE, field: "updatedAt" })
-      updatedAt: Date;
+      @Column({ type: DataType.DATE, field: "updated_at" })
+      updated_at: Date;
     
       @DeletedAt
-      @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
+      @Column({ type: DataType.DATE, field: "deleted_at", allowNull:true })
       @Field({nullable: true})
-      deletedAt?: Date;
+      deleted_at?: Date;
   
       
 }

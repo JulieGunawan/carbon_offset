@@ -5,12 +5,13 @@ import { Field, Int } from "@nestjs/graphql";
 import { ModelEntity } from "src/model/entities/model.entity";
 
 export type MakeAttributes = {
-    makeId: number;
+    make_id: number;
     make: string;
+    logo:string,
     models?: ModelEntity[];
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt: Date;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at: Date;
 }
 
 export const MakeProvider = "MAKE_PROVIDER" as const;
@@ -28,7 +29,7 @@ export class MakeEntity extends Model<MakeAttributes>{
         autoIncrement: true,
       })
       @Field((type) => Int)
-      makeId: number;
+      make_id: number;
   
       @Column({
         type: DataType.STRING,
@@ -47,17 +48,17 @@ export class MakeEntity extends Model<MakeAttributes>{
       logo?: string;
   
       @CreatedAt
-      @Column({ type: DataType.DATE, field: "createdAt" })
-      createdAt!: Date;
+      @Column({ type: DataType.DATE, field: "created_at" })
+      created_at!: Date;
   
       @UpdatedAt
-      @Column({ type: DataType.DATE, field: "updatedAt" })
-      updatedAt: Date;
+      @Column({ type: DataType.DATE, field: "updated_at" })
+      updated_at: Date;
   
       @DeletedAt
-      @Column({ type: DataType.DATE, field: "deletedAt", allowNull:true })
+      @Column({ type: DataType.DATE, field: "deleted_at", allowNull:true })
       @Field({nullable: true})
-      deletedAt?: Date;
+      deleted_at?: Date;
 
       @HasMany(() => ModelEntity)
       models?: ModelEntity[]

@@ -8,10 +8,10 @@ import { MakeEntity } from './entities/make.entity';
 export class MakeResolver {
   constructor(private readonly makeService: MakeService) {}
 
-//   @Mutation('createMake')
-//   create(@Args('createMakeInput') createMakeInput: CreateMakeInput) {
-//     return this.makeService.create(createMakeInput);
-//   }
+  @Mutation('createMake')
+  createMake(@Args('createMakeInput') createMakeInput: CreateMakeInput) {
+    return this.makeService.create(createMakeInput);
+  }
 
   @Query(()=>[MakeEntity])
   async getAllMakes(): Promise<MakeEntity[]>{
@@ -30,8 +30,12 @@ export class MakeResolver {
 //     return this.makeService.update(updateMakeInput.id, updateMakeInput);
 //   }
 
-//   @Mutation('removeMake')
-//   remove(@Args('id') id: number) {
-//     return this.makeService.remove(id);
-//   }
+  @Mutation(()=> Boolean)
+  // async removeMakeByName(@Args('make') make: string):Promise<Boolean> {
+  //   return await this.makeService.removeOne(make);
+  // }
+
+  async removeMakeById(@Args('id') id: number):Promise<Boolean> {
+    return await this.makeService.removeOne(id);
+  }
 }

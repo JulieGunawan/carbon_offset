@@ -1,13 +1,12 @@
 type Model {
   # Example field (placeholder)
-  modelId: Int!
-  fkMakeId:Int!
+  model_id: Int!
+  fk_make_id:Int!
   model:String
-  make:Make
-  treeRatio:Float!
-  createdAt:Date!
-  updatedAt:Date!
-  deletedAt:Date
+  tree_to_km:Float!
+  created_at:Date!
+  updated_at:Date!
+  deleted_at:Date
 }
 
 input CreateModelInput {

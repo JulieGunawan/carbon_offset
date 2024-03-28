@@ -9,9 +9,11 @@ export class MakeService {
   constructor(
     @Inject(MakeProvider) private makeModel: typeof MakeEntity
 ) {}
-//   create(createMakeInput: CreateMakeInput) {
-//     return 'This action adds a new make';
-//   }
+  async create(createMakeInput: CreateMakeInput) {
+    return await this.makeModel.create({
+      make: createMakeInput.make
+    })
+  }
 
   async findAll(): Promise<MakeEntity[]> {
     console.log('lalalla')
@@ -26,7 +28,21 @@ export class MakeService {
 //     return `This action updates a #${id} make`;
 //   }
 
-//   remove(id: number) {
-//     return `This action removes a #${id} make`;
-//   }
+  // async removeOne(make: string):Promise<Boolean> {
+  //   const removedMake = (await this.makeModel.destroy({ where: { make } }));
+  //   if (!removedMake) {
+  //     throw new Error(`Model with name ${make} not found.`);
+  //   }
+
+  //   return await true;
+  // }
+
+    async removeOne(id: number):Promise<Boolean> {
+    const removedMake = (await this.makeModel.destroy({ where: { make_id:id } }));
+    if (!removedMake) {
+      throw new Error(`Model with id ${id} not found.`);
+    }
+
+    return await true;
+  }
 }

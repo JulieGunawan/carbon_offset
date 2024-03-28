@@ -1,20 +1,20 @@
 type Inventory {
   # Example field (placeholder)
-  vehicleId: Int!
-  makeName:String!
-  modelName:String!
+  inventory_id: Int!
+  make:String!
+  model:String!
   trim: String!
   year: Int!
-  fuelType: String!
+  fuel_type: String!
   image:String
   mileage:Int!
-  fkUserId:Int
-  fkMakeId:Int
-  fkModelId:Int
-  treePlanted:Int
-  createdAt:Date!
-  updatedAt:Date!
-  deletedAt:Date
+  fk_user_d:Int
+  fk_make_id:Int
+  fk_model_id:Int
+  planted_tree:Int
+  created_at:Date!
+  updated_at:Date!
+  deleted_at:Date
 }
 
 input CreateInventoryInput {

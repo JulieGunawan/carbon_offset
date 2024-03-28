@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('Makes', {
-      id: {
+      make_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -16,15 +16,19 @@ module.exports = {
       logo: {
         type: Sequelize.STRING
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW()
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW()
+      },
+      deleted_at: {
+        allowNull: true,
+        type: Sequelize.DATE,
       }
     });
   },

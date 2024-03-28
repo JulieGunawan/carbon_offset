@@ -1,7 +1,7 @@
 scalar Date 
 
 type User {
-  userId: Int!
+  user_id: Int!
   name:String!
   email:String!
   password:String!
@@ -9,9 +9,9 @@ type User {
   avatar:String
   inventory: [Inventory]
   order: [Invoice]
-  createdAt:Date!
-  updatedAt:Date!
-  deletedAt:Date
+  created_at:Date!
+  updated_at:Date!
+  deleted_at:Date
 }
 
 input CreateUserInput {

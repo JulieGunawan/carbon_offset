@@ -1,12 +1,12 @@
 type Invoice {
-  orderId: Int!
+  invoice_id: Int!
   amount: Int!
-  treePurchased: Int!
-  fkVehicleId: Int!
-  fkUserId: Int!
-  createdAt:Date!
-  updatedAt:Date!
-  deletedAt:Date
+  purchased_tree: Int!
+  fk_vehicle_id: Int!
+  fk_user_id: Int!
+  created_at:Date!
+  updated_at:Date!
+  deleted_at:Date
 }
 
 type Query {

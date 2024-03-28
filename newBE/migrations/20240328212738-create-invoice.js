@@ -3,24 +3,30 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Models', {
-      model_id: {
+    await queryInterface.createTable('Invoices', {
+      invoice_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      model: {
-        type: Sequelize.STRING
-      },
-      fk_make_id: {
-        type: Sequelize.INTEGER,
-        references:{ model:'Makes', key:'make_id'},
-        allowNull:false
-      },
-      tree_to_km: {
+      amount: {
         type: Sequelize.FLOAT,
         allowNull:false
+      },
+      purchased_tree: {
+        type: Sequelize.INTEGER,
+        allowNull:false
+      },
+      fk_user_id: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{ model:'Users', key:'user_id'},
+      },
+      fk_vehicle_id: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{ model:'Inventories', key:'inventory_id'},
       },
       created_at: {
         allowNull: false,
@@ -40,6 +46,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('Models');
+    await queryInterface.dropTable('Invoices');
   }
 };

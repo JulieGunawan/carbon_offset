@@ -31,6 +31,7 @@ import { ModelEntity } from './model/entities/model.entity';
       password: '142536',
       database: 'mydb',
       models: [UserEntity, InventoryEntity, MakeEntity, InvoiceEntity, ModelEntity],
+
     }),
     UserModule,
     InventoryModule,
